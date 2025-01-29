@@ -15,7 +15,9 @@ const sess = {
   cookie: {},
   resave: false,
   saveUninitialized: true,
-  store: new SequelizeStore({ db: sequelize }),
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
 };
 
 app.use(session(sess));
@@ -32,6 +34,6 @@ app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
-    console.log(`Server running at http://localhost:${PORT}`)
+    console.log(`Server is running at http://localhost:${PORT}`)
   );
 });
